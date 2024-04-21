@@ -14,13 +14,6 @@ public class JsonReader {
             String jsonContent = new String(Files.readAllBytes(Paths.get(pathToFile)));
             // Create a JSON object from the string.
             JSONObject data = new JSONObject(jsonContent);
-            // // Check if the "Resource" field exists in the JSON
-            if (!data.getJSONObject("PolicyDocument")
-                    .getJSONArray("Statement")
-                    .getJSONObject(0)
-                    .has("Resource")) {
-                throw new RuntimeException("Field 'Resource' not found in the JSON file.");
-            }
             // Get the value of the "Resource" field from our JSON object.
             String resource = data.getJSONObject("PolicyDocument")
                     .getJSONArray("Statement")
